@@ -1,0 +1,145 @@
+[gd_scene load_steps=10 format=3 uid="uid://c7q208mj2pus6"]
+
+[ext_resource type="Script" uid="uid://dmvu1q76p4pi8" path="res://Scripts/house.gd" id="1_h4k4s"]
+[ext_resource type="Texture2D" uid="uid://cfknd57jbxuny" path="res://Resources/hospital-room.png" id="2_xu4oo"]
+[ext_resource type="Texture2D" uid="uid://mgba8802jdr8" path="res://Resources/hospital_roof.png" id="3_comfx"]
+[ext_resource type="PackedScene" uid="uid://btaf7j062m1mx" path="res://Scenes/crate.tscn" id="3_xioqu"]
+[ext_resource type="PackedScene" uid="uid://dnls83hswmjo3" path="res://Scenes/bullet_crate.tscn" id="4_g6i51"]
+[ext_resource type="PackedScene" uid="uid://cwhhhveebgb7t" path="res://Scenes/assets_crate.tscn" id="5_tgtko"]
+[ext_resource type="PackedScene" uid="uid://bqnb1kffd0vqh" path="res://Scenes/zombie.tscn" id="6_6bdji"]
+
+[sub_resource type="OccluderPolygon2D" id="OccluderPolygon2D_pfppk"]
+polygon = PackedVector2Array(1, -100, 200, -100, 200, 100, 0, 100)
+
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_e4cl1"]
+radius = 5.0
+height = 46.0
+
+[node name="Hospital" type="Node2D" node_paths=PackedStringArray("corners", "roof", "tiles")]
+z_index = -1
+script = ExtResource("1_h4k4s")
+corners = NodePath("corners")
+roof = NodePath("roof/HospitalRoof")
+tiles = NodePath("Base")
+
+[node name="Base" type="Node2D" parent="."]
+light_mask = 2
+
+[node name="Sprite2D" type="Sprite2D" parent="Base"]
+position = Vector2(100, 0)
+rotation = 1.5708
+texture = ExtResource("2_xu4oo")
+
+[node name="crates" type="Node2D" parent="."]
+
+[node name="Crate3" parent="crates" instance=ExtResource("3_xioqu")]
+position = Vector2(80, 84)
+
+[node name="StaticBody2D" parent="crates" instance=ExtResource("4_g6i51")]
+position = Vector2(22, 84)
+
+[node name="StaticBody2D6" parent="crates" instance=ExtResource("4_g6i51")]
+position = Vector2(142, 43)
+
+[node name="StaticBody2D8" parent="crates" instance=ExtResource("4_g6i51")]
+position = Vector2(184, 17)
+
+[node name="assets_crate" parent="crates" instance=ExtResource("5_tgtko")]
+position = Vector2(184, -15)
+
+[node name="assets_crate7" parent="crates" instance=ExtResource("5_tgtko")]
+position = Vector2(184, -81)
+
+[node name="assets_crate8" parent="crates" instance=ExtResource("5_tgtko")]
+position = Vector2(184, 84)
+
+[node name="assets_crate9" parent="crates" instance=ExtResource("5_tgtko")]
+position = Vector2(48, 84)
+
+[node name="assets_crate10" parent="crates" instance=ExtResource("5_tgtko")]
+position = Vector2(55, -81)
+
+[node name="corners" type="Node2D" parent="."]
+
+[node name="Node2D" type="Node2D" parent="corners"]
+position = Vector2(205, 103)
+
+[node name="Node2D2" type="Node2D" parent="corners"]
+position = Vector2(-3, 106)
+
+[node name="Node2D3" type="Node2D" parent="corners"]
+position = Vector2(-5, -107)
+
+[node name="Node2D4" type="Node2D" parent="corners"]
+position = Vector2(206, -107)
+
+[node name="zombies" type="Node2D" parent="."]
+
+[node name="Zombie" parent="zombies" instance=ExtResource("6_6bdji")]
+position = Vector2(137, 0)
+in_house = true
+
+[node name="Zombie2" parent="zombies" instance=ExtResource("6_6bdji")]
+position = Vector2(44, 66)
+in_house = true
+
+[node name="Zombie3" parent="zombies" instance=ExtResource("6_6bdji")]
+position = Vector2(14, 9)
+in_house = true
+
+[node name="Zombie9" parent="zombies" instance=ExtResource("6_6bdji")]
+position = Vector2(88, 2)
+in_house = true
+
+[node name="Zombie4" parent="zombies" instance=ExtResource("6_6bdji")]
+position = Vector2(100, 63)
+in_house = true
+
+[node name="Zombie5" parent="zombies" instance=ExtResource("6_6bdji")]
+position = Vector2(146, 49)
+in_house = true
+
+[node name="Zombie6" parent="zombies" instance=ExtResource("6_6bdji")]
+position = Vector2(148, -70)
+in_house = true
+
+[node name="Zombie7" parent="zombies" instance=ExtResource("6_6bdji")]
+position = Vector2(95, -74)
+in_house = true
+
+[node name="Zombie8" parent="zombies" instance=ExtResource("6_6bdji")]
+position = Vector2(25, -68)
+in_house = true
+
+[node name="LightOccluder2D" type="LightOccluder2D" parent="."]
+occluder = SubResource("OccluderPolygon2D_pfppk")
+
+[node name="VisibleOnScreenEnabler2D" type="VisibleOnScreenEnabler2D" parent="."]
+position = Vector2(112, 4.5)
+scale = Vector2(19, 16.35)
+
+[node name="StaticBody2D" type="StaticBody2D" parent="."]
+collision_layer = 3
+collision_mask = 3
+
+[node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="StaticBody2D"]
+polygon = PackedVector2Array(0, -28, 8, -28, 8, -92, 64, -92, 64, -12, 72, -12, 72, -28, 96, -28, 96, -36, 72, -36, 72, -92, 192, -92, 192, -36, 120, -36, 120, -28, 192, -28, 192, 28, 120, 28, 120, 36, 192, 36, 192, 92, 72, 92, 72, 36, 96, 36, 96, 28, 72, 28, 72, 12, 64, 12, 64, 92, 8, 92, 8, 28, 0, 28, 0, 100, 200, 100, 200, -100, 0, -100)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="StaticBody2D"]
+position = Vector2(35, 0)
+shape = SubResource("CapsuleShape2D_e4cl1")
+
+[node name="roof" type="Node2D" parent="."]
+light_mask = 2
+
+[node name="HospitalRoof" type="Sprite2D" parent="roof"]
+position = Vector2(100, 0)
+texture = ExtResource("3_comfx")
+
+[node name="Area2D" type="Area2D" parent="."]
+collision_layer = 3
+collision_mask = 3
+
+[node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="Area2D"]
+visible = false
+polygon = PackedVector2Array(0, -28, 0, 28, 8, 28, 8, 92, 192, 92, 192, -92, 8, -92, 8, -28)

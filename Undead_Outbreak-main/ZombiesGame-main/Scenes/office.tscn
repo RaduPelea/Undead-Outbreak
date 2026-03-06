@@ -1,0 +1,148 @@
+[gd_scene load_steps=8 format=3 uid="uid://bn2irro6odpua"]
+
+[ext_resource type="Script" uid="uid://dmvu1q76p4pi8" path="res://Scripts/house.gd" id="1_6frhs"]
+[ext_resource type="Texture2D" uid="uid://cf7isxyyuim37" path="res://Resources/office.png" id="2_qstj6"]
+[ext_resource type="PackedScene" uid="uid://dnls83hswmjo3" path="res://Scenes/bullet_crate.tscn" id="3_vm8s6"]
+[ext_resource type="PackedScene" uid="uid://cwhhhveebgb7t" path="res://Scenes/assets_crate.tscn" id="4_1vt7d"]
+[ext_resource type="PackedScene" uid="uid://bqnb1kffd0vqh" path="res://Scenes/zombie.tscn" id="5_7winu"]
+[ext_resource type="Texture2D" uid="uid://cmbxbv1lu12c4" path="res://Resources/office-roof.png" id="6_8sq1o"]
+
+[sub_resource type="OccluderPolygon2D" id="OccluderPolygon2D_7co07"]
+polygon = PackedVector2Array(1, -151, 300, -150, 300, 149, -1, 149)
+
+[node name="office" type="Node2D" node_paths=PackedStringArray("corners", "roof", "tiles")]
+z_index = -1
+script = ExtResource("1_6frhs")
+corners = NodePath("corners")
+roof = NodePath("roof/Sprite2D")
+tiles = NodePath("base")
+
+[node name="base" type="Node2D" parent="."]
+light_mask = 2
+
+[node name="Sprite2D" type="Sprite2D" parent="base"]
+position = Vector2(150, 0)
+rotation = 1.57079
+texture = ExtResource("2_qstj6")
+
+[node name="crates" type="Node2D" parent="."]
+
+[node name="StaticBody2D" parent="crates" instance=ExtResource("3_vm8s6")]
+position = Vector2(25, -123)
+
+[node name="StaticBody2D2" parent="crates" instance=ExtResource("3_vm8s6")]
+position = Vector2(276, -124)
+
+[node name="StaticBody2D3" parent="crates" instance=ExtResource("3_vm8s6")]
+position = Vector2(275, 120)
+
+[node name="StaticBody2D4" parent="crates" instance=ExtResource("3_vm8s6")]
+position = Vector2(26, 123)
+
+[node name="assets_crate" parent="crates" instance=ExtResource("4_1vt7d")]
+position = Vector2(150, 126)
+
+[node name="assets_crate2" parent="crates" instance=ExtResource("4_1vt7d")]
+position = Vector2(151, -122)
+
+[node name="corners" type="Node2D" parent="."]
+
+[node name="Node2D" type="Node2D" parent="corners"]
+position = Vector2(-3, -153)
+
+[node name="Node2D2" type="Node2D" parent="corners"]
+position = Vector2(303, -155)
+
+[node name="Node2D3" type="Node2D" parent="corners"]
+position = Vector2(304, 152)
+
+[node name="Node2D4" type="Node2D" parent="corners"]
+position = Vector2(-3, 153)
+
+[node name="zombies" type="Node2D" parent="."]
+
+[node name="Zombie" parent="zombies" instance=ExtResource("5_7winu")]
+position = Vector2(54, 78)
+
+[node name="Zombie2" parent="zombies" instance=ExtResource("5_7winu")]
+position = Vector2(154, 74)
+
+[node name="Zombie3" parent="zombies" instance=ExtResource("5_7winu")]
+position = Vector2(216, -81)
+
+[node name="Zombie4" parent="zombies" instance=ExtResource("5_7winu")]
+position = Vector2(57, -89)
+
+[node name="Zombie5" parent="zombies" instance=ExtResource("5_7winu")]
+position = Vector2(143, -1)
+
+[node name="Zombie6" parent="zombies" instance=ExtResource("5_7winu")]
+position = Vector2(216, -1)
+
+[node name="Zombie7" parent="zombies" instance=ExtResource("5_7winu")]
+position = Vector2(47, -1)
+
+[node name="LightOccluder2D" type="LightOccluder2D" parent="."]
+occluder = SubResource("OccluderPolygon2D_7co07")
+
+[node name="VisibleOnScreenEnabler2D" type="VisibleOnScreenEnabler2D" parent="."]
+position = Vector2(138, 24.5)
+scale = Vector2(35, 34.45)
+
+[node name="StaticBody2D" type="StaticBody2D" parent="."]
+visible = false
+collision_layer = 3
+collision_mask = 3
+
+[node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="StaticBody2D"]
+rotation = 4.63093e-05
+polygon = PackedVector2Array(-0.00203761, -44, 15.998, -44.0007, 15.9938, -134.001, 283.994, -134.013, 283.998, -44.0132, 299.998, -44.0139, 299.993, -150.014, -0.00694639, -150)
+
+[node name="CollisionPolygon2D2" type="CollisionPolygon2D" parent="StaticBody2D"]
+polygon = PackedVector2Array(0, 36, 16, 36, 16, 134, 284, 134, 284, 36, 300, 36, 300, 150, 0, 150)
+
+[node name="CollisionPolygon2D3" type="CollisionPolygon2D" parent="StaticBody2D"]
+polygon = PackedVector2Array(28, -103, 45, -103, 45, -74, 70, -74, 70, -63, 28, -63)
+
+[node name="CollisionPolygon2D4" type="CollisionPolygon2D" parent="StaticBody2D"]
+position = Vector2(71, 1)
+polygon = PackedVector2Array(28, -103, 45, -103, 45, -74, 70, -74, 70, -63, 28, -63)
+
+[node name="CollisionPolygon2D5" type="CollisionPolygon2D" parent="StaticBody2D"]
+position = Vector2(137, 3)
+polygon = PackedVector2Array(28, -103, 45, -103, 45, -74, 70, -74, 70, -63, 28, -63)
+
+[node name="CollisionPolygon2D6" type="CollisionPolygon2D" parent="StaticBody2D"]
+position = Vector2(204, 4)
+polygon = PackedVector2Array(28, -103, 45, -103, 45, -74, 70, -74, 70, -63, 28, -63)
+
+[node name="CollisionPolygon2D7" type="CollisionPolygon2D" parent="StaticBody2D"]
+polygon = PackedVector2Array(27, 94, 27, 55, 69, 55, 69, 66, 44, 66, 44, 94)
+
+[node name="CollisionPolygon2D8" type="CollisionPolygon2D" parent="StaticBody2D"]
+position = Vector2(70, 0)
+polygon = PackedVector2Array(27, 94, 27, 55, 69, 55, 69, 66, 44, 66, 44, 94)
+
+[node name="CollisionPolygon2D9" type="CollisionPolygon2D" parent="StaticBody2D"]
+position = Vector2(138, 0)
+polygon = PackedVector2Array(27, 94, 27, 55, 69, 55, 69, 66, 44, 66, 44, 94)
+
+[node name="CollisionPolygon2D10" type="CollisionPolygon2D" parent="StaticBody2D"]
+position = Vector2(203, -2)
+polygon = PackedVector2Array(27, 94, 27, 55, 69, 55, 69, 66, 44, 66, 44, 94)
+
+[node name="roof" type="Node2D" parent="."]
+light_mask = 2
+
+[node name="Sprite2D" type="Sprite2D" parent="roof"]
+position = Vector2(150, 0)
+rotation = 1.5708
+texture = ExtResource("6_8sq1o")
+
+[node name="Area2D" type="Area2D" parent="."]
+collision_layer = 3
+collision_mask = 3
+
+[node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="Area2D"]
+visible = false
+polygon = PackedVector2Array(0, -44, 16, -44, 16, -134, 284, -134, 284, -43, 300, -44, 300, 36, 284, 36, 284, 133, 16, 134, 16, 36, 0, 36)

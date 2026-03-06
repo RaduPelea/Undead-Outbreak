@@ -1,0 +1,20 @@
+[gd_scene load_steps=3 format=3 uid="uid://6cod6sdcjv37"]
+
+[ext_resource type="Script" uid="uid://d3vlno1hqoo0p" path="res://Scripts/blood_particles.gd" id="1_ftu6g"]
+
+[sub_resource type="ParticleProcessMaterial" id="ParticleProcessMaterial_v0g2e"]
+particle_flag_disable_z = true
+spread = 180.0
+initial_velocity_min = 12.0
+initial_velocity_max = 12.0
+gravity = Vector3(0, 0, 0)
+scale_max = 1.4
+color = Color(0.635294, 0.0235294, 0, 1)
+
+[node name="blood_particles" type="GPUParticles2D"]
+amount = 12
+process_material = SubResource("ParticleProcessMaterial_v0g2e")
+lifetime = 0.4
+one_shot = true
+explosiveness = 0.8
+script = ExtResource("1_ftu6g")

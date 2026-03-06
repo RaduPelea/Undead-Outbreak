@@ -1,0 +1,161 @@
+[gd_scene load_steps=7 format=3 uid="uid://cveroyb3000uv"]
+
+[ext_resource type="Script" uid="uid://cpvoi44ad0neo" path="res://Scripts/main_menu.gd" id="1_tdnxv"]
+[ext_resource type="Texture2D" uid="uid://bword10heix6d" path="res://Resources/logo.png" id="2_5rdb7"]
+[ext_resource type="PackedScene" uid="uid://bhqyullkehgyk" path="res://Scenes/help_menu.tscn" id="3_0qsdl"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_cakek"]
+bg_color = Color(0.12549, 0.34902, 0.937255, 0.215686)
+corner_radius_top_left = 5
+corner_radius_top_right = 5
+corner_radius_bottom_right = 5
+corner_radius_bottom_left = 5
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_gkaj8"]
+bg_color = Color(0.12549, 0.34902, 0.937255, 0.333333)
+corner_radius_top_left = 5
+corner_radius_top_right = 5
+corner_radius_bottom_right = 5
+corner_radius_bottom_left = 5
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_c7imi"]
+bg_color = Color(0.12549, 0.34902, 0.937255, 0.117647)
+corner_radius_top_left = 5
+corner_radius_top_right = 5
+corner_radius_bottom_right = 5
+corner_radius_bottom_left = 5
+
+[node name="MainMenu" type="Node2D"]
+script = ExtResource("1_tdnxv")
+
+[node name="ColorRect" type="ColorRect" parent="."]
+offset_right = 320.0
+offset_bottom = 180.0
+mouse_filter = 2
+color = Color(0, 0, 0, 1)
+
+[node name="Help_Menu" parent="ColorRect" instance=ExtResource("3_0qsdl")]
+visible = false
+z_index = 2
+layout_mode = 1
+
+[node name="MarginContainer" type="MarginContainer" parent="."]
+offset_right = 320.0
+offset_bottom = 180.0
+theme_override_constants/margin_left = 75
+theme_override_constants/margin_top = 20
+theme_override_constants/margin_right = 75
+theme_override_constants/margin_bottom = 40
+
+[node name="VBoxContainer" type="VBoxContainer" parent="MarginContainer"]
+layout_mode = 2
+
+[node name="Label" type="Label" parent="MarginContainer/VBoxContainer"]
+layout_mode = 2
+text = "           Undead Outbreak"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="VBoxContainer" type="VBoxContainer" parent="MarginContainer/VBoxContainer"]
+layout_mode = 2
+size_flags_vertical = 3
+theme_override_constants/separation = 4
+alignment = 1
+
+[node name="MarginContainer" type="MarginContainer" parent="MarginContainer/VBoxContainer/VBoxContainer"]
+layout_mode = 2
+size_flags_vertical = 3
+theme_override_constants/margin_left = 50
+theme_override_constants/margin_right = 50
+
+[node name="new_game" type="Button" parent="MarginContainer/VBoxContainer/VBoxContainer/MarginContainer"]
+layout_mode = 2
+theme_override_styles/hover = SubResource("StyleBoxFlat_cakek")
+theme_override_styles/pressed = SubResource("StyleBoxFlat_gkaj8")
+theme_override_styles/normal = SubResource("StyleBoxFlat_c7imi")
+text = "New Game"
+
+[node name="MarginContainer5" type="MarginContainer" parent="MarginContainer/VBoxContainer/VBoxContainer"]
+layout_mode = 2
+size_flags_vertical = 3
+theme_override_constants/margin_left = 50
+theme_override_constants/margin_right = 50
+
+[node name="continue" type="Button" parent="MarginContainer/VBoxContainer/VBoxContainer/MarginContainer5"]
+layout_mode = 2
+theme_override_styles/hover = SubResource("StyleBoxFlat_cakek")
+theme_override_styles/pressed = SubResource("StyleBoxFlat_gkaj8")
+theme_override_styles/normal = SubResource("StyleBoxFlat_c7imi")
+text = "Continue
+"
+
+[node name="MarginContainer2" type="MarginContainer" parent="MarginContainer/VBoxContainer/VBoxContainer"]
+layout_mode = 2
+size_flags_vertical = 3
+theme_override_constants/margin_left = 50
+theme_override_constants/margin_right = 50
+
+[node name="options" type="Button" parent="MarginContainer/VBoxContainer/VBoxContainer/MarginContainer2"]
+layout_mode = 2
+theme_override_styles/hover = SubResource("StyleBoxFlat_cakek")
+theme_override_styles/pressed = SubResource("StyleBoxFlat_gkaj8")
+theme_override_styles/normal = SubResource("StyleBoxFlat_c7imi")
+text = "Options
+"
+
+[node name="MarginContainer3" type="MarginContainer" parent="MarginContainer/VBoxContainer/VBoxContainer"]
+layout_mode = 2
+size_flags_vertical = 3
+theme_override_constants/margin_left = 50
+theme_override_constants/margin_right = 50
+
+[node name="credits" type="Button" parent="MarginContainer/VBoxContainer/VBoxContainer/MarginContainer3"]
+layout_mode = 2
+theme_override_styles/hover = SubResource("StyleBoxFlat_cakek")
+theme_override_styles/pressed = SubResource("StyleBoxFlat_gkaj8")
+theme_override_styles/normal = SubResource("StyleBoxFlat_c7imi")
+text = "Made By
+"
+
+[node name="MarginContainer4" type="MarginContainer" parent="MarginContainer/VBoxContainer/VBoxContainer"]
+layout_mode = 2
+size_flags_vertical = 3
+theme_override_constants/margin_left = 50
+theme_override_constants/margin_right = 50
+
+[node name="exit" type="Button" parent="MarginContainer/VBoxContainer/VBoxContainer/MarginContainer4"]
+layout_mode = 2
+theme_override_styles/hover = SubResource("StyleBoxFlat_cakek")
+theme_override_styles/pressed = SubResource("StyleBoxFlat_gkaj8")
+theme_override_styles/normal = SubResource("StyleBoxFlat_c7imi")
+text = "Exit
+"
+
+[node name="logo" type="Sprite2D" parent="."]
+position = Vector2(98, 30)
+texture = ExtResource("2_5rdb7")
+
+[node name="Help" type="Button" parent="."]
+z_index = 5
+anchors_preset = -1
+anchor_left = 0.996988
+anchor_top = 0.0885417
+anchor_right = 0.996988
+anchor_bottom = 0.0885417
+offset_left = 300.0
+offset_top = 17.0
+offset_right = 315.0
+offset_bottom = 40.0
+grow_horizontal = 0
+theme_override_styles/hover = SubResource("StyleBoxFlat_cakek")
+theme_override_styles/pressed = SubResource("StyleBoxFlat_gkaj8")
+theme_override_styles/normal = SubResource("StyleBoxFlat_c7imi")
+text = "?"
+metadata/_edit_use_anchors_ = true
+
+[connection signal="button_up" from="MarginContainer/VBoxContainer/VBoxContainer/MarginContainer/new_game" to="." method="_on_new_game_button_up"]
+[connection signal="pressed" from="MarginContainer/VBoxContainer/VBoxContainer/MarginContainer5/continue" to="." method="_on_continue_pressed"]
+[connection signal="button_up" from="MarginContainer/VBoxContainer/VBoxContainer/MarginContainer2/options" to="." method="_on_options_button_up"]
+[connection signal="button_up" from="MarginContainer/VBoxContainer/VBoxContainer/MarginContainer3/credits" to="." method="_on_credits_button_up"]
+[connection signal="button_up" from="MarginContainer/VBoxContainer/VBoxContainer/MarginContainer4/exit" to="." method="_on_exit_button_up"]
+[connection signal="pressed" from="Help" to="." method="_on_help_pressed"]

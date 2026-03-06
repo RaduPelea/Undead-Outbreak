@@ -1,0 +1,152 @@
+[gd_scene load_steps=9 format=3 uid="uid://cakip10itwvmk"]
+
+[ext_resource type="Script" uid="uid://dmvu1q76p4pi8" path="res://Scripts/house.gd" id="1_sckb0"]
+[ext_resource type="Texture2D" uid="uid://bgnvv38iowwxx" path="res://Resources/floor-police.png" id="2_qxadx"]
+[ext_resource type="PackedScene" uid="uid://btaf7j062m1mx" path="res://Scenes/crate.tscn" id="3_260gc"]
+[ext_resource type="Texture2D" uid="uid://4pcli41btpwv" path="res://Resources/roof-police.png" id="3_l81rc"]
+[ext_resource type="PackedScene" uid="uid://dnls83hswmjo3" path="res://Scenes/bullet_crate.tscn" id="4_af41g"]
+[ext_resource type="PackedScene" uid="uid://cwhhhveebgb7t" path="res://Scenes/assets_crate.tscn" id="5_jmhbv"]
+[ext_resource type="PackedScene" uid="uid://bqnb1kffd0vqh" path="res://Scenes/zombie.tscn" id="5_ulaon"]
+
+[sub_resource type="OccluderPolygon2D" id="OccluderPolygon2D_1s026"]
+polygon = PackedVector2Array(2, -100, 302, -100, 302, 100, 2, 99)
+
+[node name="police_station" type="Node2D" node_paths=PackedStringArray("corners", "roof", "tiles")]
+z_index = -1
+script = ExtResource("1_sckb0")
+corners = NodePath("corners")
+roof = NodePath("roof/hospital_roof")
+tiles = NodePath("base")
+
+[node name="base" type="Node2D" parent="."]
+light_mask = 2
+
+[node name="Sprite2D" type="Sprite2D" parent="base"]
+position = Vector2(152, 0)
+rotation = 1.57079
+texture = ExtResource("2_qxadx")
+
+[node name="crates" type="Node2D" parent="."]
+
+[node name="Crate2" parent="crates" instance=ExtResource("3_260gc")]
+position = Vector2(18, -84)
+
+[node name="Crate4" parent="crates" instance=ExtResource("3_260gc")]
+position = Vector2(18, 83)
+
+[node name="Crate5" parent="crates" instance=ExtResource("3_260gc")]
+position = Vector2(250, -84)
+
+[node name="Crate6" parent="crates" instance=ExtResource("3_260gc")]
+position = Vector2(286, -53)
+
+[node name="Crate7" parent="crates" instance=ExtResource("3_260gc")]
+position = Vector2(250, 84)
+
+[node name="Crate8" parent="crates" instance=ExtResource("3_260gc")]
+position = Vector2(286, 43)
+
+[node name="StaticBody2D" parent="crates" instance=ExtResource("4_af41g")]
+position = Vector2(86, -73)
+
+[node name="StaticBody2D5" parent="crates" instance=ExtResource("4_af41g")]
+position = Vector2(217, -72)
+
+[node name="StaticBody2D6" parent="crates" instance=ExtResource("4_af41g")]
+position = Vector2(218, 78)
+
+[node name="StaticBody2D9" parent="crates" instance=ExtResource("4_af41g")]
+position = Vector2(85, 75)
+
+[node name="assets_crate" parent="crates" instance=ExtResource("5_jmhbv")]
+position = Vector2(135, -72)
+
+[node name="assets_crate2" parent="crates" instance=ExtResource("5_jmhbv")]
+position = Vector2(181, -72)
+
+[node name="assets_crate3" parent="crates" instance=ExtResource("5_jmhbv")]
+position = Vector2(177, 76)
+
+[node name="assets_crate4" parent="crates" instance=ExtResource("5_jmhbv")]
+position = Vector2(135, 75)
+
+[node name="corners" type="Node2D" parent="."]
+
+[node name="Node2D" type="Node2D" parent="corners"]
+position = Vector2(0, -103)
+
+[node name="Node2D2" type="Node2D" parent="corners"]
+position = Vector2(305, -105)
+
+[node name="Node2D3" type="Node2D" parent="corners"]
+position = Vector2(306, 104)
+
+[node name="Node2D4" type="Node2D" parent="corners"]
+position = Vector2(-1, 104)
+
+[node name="zombies" type="Node2D" parent="."]
+
+[node name="Zombie" parent="zombies" instance=ExtResource("5_ulaon")]
+position = Vector2(78, -1)
+in_house = true
+
+[node name="Zombie2" parent="zombies" instance=ExtResource("5_ulaon")]
+position = Vector2(165, -1)
+in_house = true
+
+[node name="Zombie3" parent="zombies" instance=ExtResource("5_ulaon")]
+position = Vector2(231, -2)
+in_house = true
+
+[node name="Zombie4" parent="zombies" instance=ExtResource("5_ulaon")]
+position = Vector2(264, -72)
+in_house = true
+
+[node name="Zombie5" parent="zombies" instance=ExtResource("5_ulaon")]
+position = Vector2(274, 72)
+in_house = true
+
+[node name="Zombie6" parent="zombies" instance=ExtResource("5_ulaon")]
+position = Vector2(86, -40)
+in_house = true
+
+[node name="Zombie7" parent="zombies" instance=ExtResource("5_ulaon")]
+position = Vector2(89, 28)
+in_house = true
+
+[node name="Zombie8" parent="zombies" instance=ExtResource("5_ulaon")]
+position = Vector2(37, -61)
+in_house = true
+
+[node name="Zombie9" parent="zombies" instance=ExtResource("5_ulaon")]
+position = Vector2(37, 56)
+in_house = true
+
+[node name="LightOccluder2D" type="LightOccluder2D" parent="."]
+occluder = SubResource("OccluderPolygon2D_1s026")
+
+[node name="VisibleOnScreenEnabler2D" type="VisibleOnScreenEnabler2D" parent="."]
+position = Vector2(135, -9)
+scale = Vector2(48, 30.45)
+
+[node name="StaticBody2D" type="StaticBody2D" parent="."]
+collision_layer = 3
+collision_mask = 3
+
+[node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="StaticBody2D"]
+polygon = PackedVector2Array(2, -36, 10, -36, 10, -92, 63, -92, 63, -36, 79, -36, 79, -42, 70, -42, 70, -92, 108, -92, 108, -42, 95, -42, 95, -36, 126, -36, 126, -42, 116, -42, 116, -92, 154, -92, 155, -67, 155, -42, 142, -42, 142, -36, 173, -36, 173, -42, 163, -42, 163, -74, 162, -92, 194, -92, 194, -42, 189, -42, 189, -36, 206, -36, 206, -42, 202, -42, 202, -92, 234, -92, 234, -42, 222, -42, 222, -36, 234, -36, 234, -28, 242, -28, 242, -92, 294, -92, 294, 92, 242, 92, 242, 20, 234, 20, 234, 28, 222, 28, 222, 34, 234, 34, 234, 92, 202, 92, 202, 34, 206, 34, 206, 28, 190, 28, 190, 34, 194, 34, 194, 92, 163, 92, 163, 34, 174, 34, 174, 28, 142, 28, 142, 34, 155, 34, 155, 92, 116, 92, 116, 34, 126, 34, 126, 28, 95, 28, 95, 34, 108, 34, 108, 92, 70, 92, 70, 34, 79, 34, 79, 28, 63, 28, 63, 92, 10, 92, 10, 28, 2, 28, 2, 100, 302, 100, 302, -100, 2, -100)
+
+[node name="roof" type="Node2D" parent="."]
+
+[node name="hospital_roof" type="Sprite2D" parent="roof"]
+position = Vector2(152, 0)
+rotation = 1.57079
+texture = ExtResource("3_l81rc")
+
+[node name="Area2D" type="Area2D" parent="."]
+collision_layer = 3
+collision_mask = 3
+
+[node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="Area2D"]
+visible = false
+polygon = PackedVector2Array(3, -36, 11, -36, 9, -92, 294, -91, 294, 92, 10, 92, 10, 27, 2, 28)

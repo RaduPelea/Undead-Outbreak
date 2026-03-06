@@ -1,0 +1,469 @@
+[gd_scene load_steps=15 format=3 uid="uid://d4hag42jekxg2"]
+
+[ext_resource type="Script" path="res://Scripts/game.gd" id="1_dcjfs"]
+[ext_resource type="PackedScene" uid="uid://t0jnk5lhu73w" path="res://Scenes/player.tscn" id="1_g3mrk"]
+[ext_resource type="Script" path="res://Scripts/smoother.gd" id="2_shc0i"]
+[ext_resource type="PackedScene" uid="uid://bkwe841i1bjss" path="res://Scenes/Inventory/inventory.tscn" id="3_p6ulm"]
+[ext_resource type="Script" path="res://Scripts/HUD.gd" id="3_sm3cs"]
+[ext_resource type="Texture2D" uid="uid://dgk4opq0ujmus" path="res://Resources/tile_set.png" id="4_davi8"]
+[ext_resource type="Texture2D" uid="uid://4wawf18x85jf" path="res://Resources/heart.svg" id="4_q4t6n"]
+[ext_resource type="Texture2D" uid="uid://dse7v46vlv4xj" path="res://Resources/lightning.svg" id="4_ueoyv"]
+[ext_resource type="Texture2D" uid="uid://b20v1vlmhcteg" path="res://Resources/water_drop.svg" id="6_dmopy"]
+[ext_resource type="Texture2D" uid="uid://e0cfjf0wrg44" path="res://Resources/meat.svg" id="6_mpsd0"]
+[ext_resource type="Script" path="res://Scripts/MapGenerator.gd" id="7_iqm4m"]
+[ext_resource type="Texture2D" uid="uid://c2l68ceosg786" path="res://Resources/bar80x16.png" id="8_c6s2p"]
+
+[sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_co861"]
+texture = ExtResource("4_davi8")
+0:0/0 = 0
+0:0/0/physics_layer_0/linear_velocity = Vector2(0, 0)
+0:0/0/physics_layer_0/angular_velocity = 0.0
+1:0/0 = 0
+1:0/0/physics_layer_0/linear_velocity = Vector2(0, 0)
+1:0/0/physics_layer_0/angular_velocity = 0.0
+2:0/0 = 0
+2:0/0/physics_layer_0/linear_velocity = Vector2(0, 0)
+2:0/0/physics_layer_0/angular_velocity = 0.0
+3:0/0 = 0
+3:0/0/physics_layer_0/linear_velocity = Vector2(0, 0)
+3:0/0/physics_layer_0/angular_velocity = 0.0
+4:0/0 = 0
+4:0/0/physics_layer_0/linear_velocity = Vector2(0, 0)
+4:0/0/physics_layer_0/angular_velocity = 0.0
+5:0/0 = 0
+5:0/0/physics_layer_0/linear_velocity = Vector2(0, 0)
+5:0/0/physics_layer_0/angular_velocity = 0.0
+0:1/0 = 0
+0:1/0/physics_layer_0/linear_velocity = Vector2(0, 0)
+0:1/0/physics_layer_0/angular_velocity = 0.0
+1:1/0 = 0
+1:1/0/physics_layer_0/linear_velocity = Vector2(0, 0)
+1:1/0/physics_layer_0/angular_velocity = 0.0
+2:1/0 = 0
+2:1/0/physics_layer_0/linear_velocity = Vector2(0, 0)
+2:1/0/physics_layer_0/angular_velocity = 0.0
+3:1/0 = 0
+3:1/0/physics_layer_0/linear_velocity = Vector2(0, 0)
+3:1/0/physics_layer_0/angular_velocity = 0.0
+4:1/0 = 0
+4:1/0/physics_layer_0/linear_velocity = Vector2(0, 0)
+4:1/0/physics_layer_0/angular_velocity = 0.0
+0:2/0 = 0
+0:2/0/physics_layer_0/linear_velocity = Vector2(0, 0)
+0:2/0/physics_layer_0/angular_velocity = 0.0
+1:2/0 = 0
+1:2/0/physics_layer_0/linear_velocity = Vector2(0, 0)
+1:2/0/physics_layer_0/angular_velocity = 0.0
+2:2/0 = 0
+2:2/0/physics_layer_0/linear_velocity = Vector2(0, 0)
+2:2/0/physics_layer_0/angular_velocity = 0.0
+3:2/0 = 0
+3:2/0/physics_layer_0/linear_velocity = Vector2(0, 0)
+3:2/0/physics_layer_0/angular_velocity = 0.0
+4:2/0 = 0
+4:2/0/physics_layer_0/linear_velocity = Vector2(0, 0)
+4:2/0/physics_layer_0/angular_velocity = 0.0
+0:3/0 = 0
+0:3/0/physics_layer_0/linear_velocity = Vector2(0, 0)
+0:3/0/physics_layer_0/angular_velocity = 0.0
+1:3/0 = 0
+1:3/0/physics_layer_0/linear_velocity = Vector2(0, 0)
+1:3/0/physics_layer_0/angular_velocity = 0.0
+2:3/0 = 0
+2:3/0/physics_layer_0/linear_velocity = Vector2(0, 0)
+2:3/0/physics_layer_0/angular_velocity = 0.0
+3:3/0 = 0
+3:3/0/physics_layer_0/linear_velocity = Vector2(0, 0)
+3:3/0/physics_layer_0/angular_velocity = 0.0
+4:3/0 = 0
+4:3/0/physics_layer_0/linear_velocity = Vector2(0, 0)
+4:3/0/physics_layer_0/angular_velocity = 0.0
+5:3/0 = 0
+5:3/0/physics_layer_0/linear_velocity = Vector2(0, 0)
+5:3/0/physics_layer_0/angular_velocity = 0.0
+6:3/0 = 0
+6:3/0/physics_layer_0/linear_velocity = Vector2(0, 0)
+6:3/0/physics_layer_0/angular_velocity = 0.0
+7:3/0 = 0
+7:3/0/physics_layer_0/linear_velocity = Vector2(0, 0)
+7:3/0/physics_layer_0/angular_velocity = 0.0
+8:3/0 = 0
+8:3/0/physics_layer_0/linear_velocity = Vector2(0, 0)
+8:3/0/physics_layer_0/angular_velocity = 0.0
+9:3/0 = 0
+9:3/0/physics_layer_0/linear_velocity = Vector2(0, 0)
+9:3/0/physics_layer_0/angular_velocity = 0.0
+10:3/0 = 0
+10:3/0/physics_layer_0/linear_velocity = Vector2(0, 0)
+10:3/0/physics_layer_0/angular_velocity = 0.0
+11:3/0 = 0
+11:3/0/physics_layer_0/linear_velocity = Vector2(0, 0)
+11:3/0/physics_layer_0/angular_velocity = 0.0
+12:3/0 = 0
+12:3/0/physics_layer_0/linear_velocity = Vector2(0, 0)
+12:3/0/physics_layer_0/angular_velocity = 0.0
+13:3/0 = 0
+13:3/0/physics_layer_0/linear_velocity = Vector2(0, 0)
+13:3/0/physics_layer_0/angular_velocity = 0.0
+14:3/0 = 0
+14:3/0/physics_layer_0/linear_velocity = Vector2(0, 0)
+14:3/0/physics_layer_0/angular_velocity = 0.0
+0:4/0 = 0
+0:4/0/physics_layer_0/linear_velocity = Vector2(0, 0)
+0:4/0/physics_layer_0/angular_velocity = 0.0
+1:4/0 = 0
+1:4/0/physics_layer_0/linear_velocity = Vector2(0, 0)
+1:4/0/physics_layer_0/angular_velocity = 0.0
+2:4/0 = 0
+2:4/0/physics_layer_0/linear_velocity = Vector2(0, 0)
+2:4/0/physics_layer_0/angular_velocity = 0.0
+3:4/0 = 0
+3:4/0/physics_layer_0/linear_velocity = Vector2(0, 0)
+3:4/0/physics_layer_0/angular_velocity = 0.0
+4:4/0 = 0
+4:4/0/physics_layer_0/linear_velocity = Vector2(0, 0)
+4:4/0/physics_layer_0/angular_velocity = 0.0
+5:4/0 = 0
+5:4/0/physics_layer_0/linear_velocity = Vector2(0, 0)
+5:4/0/physics_layer_0/angular_velocity = 0.0
+6:4/0 = 0
+6:4/0/physics_layer_0/linear_velocity = Vector2(0, 0)
+6:4/0/physics_layer_0/angular_velocity = 0.0
+7:4/0 = 0
+7:4/0/physics_layer_0/linear_velocity = Vector2(0, 0)
+7:4/0/physics_layer_0/angular_velocity = 0.0
+8:4/0 = 0
+8:4/0/physics_layer_0/linear_velocity = Vector2(0, 0)
+8:4/0/physics_layer_0/angular_velocity = 0.0
+9:4/0 = 0
+9:4/0/physics_layer_0/linear_velocity = Vector2(0, 0)
+9:4/0/physics_layer_0/angular_velocity = 0.0
+10:4/0 = 0
+10:4/0/physics_layer_0/linear_velocity = Vector2(0, 0)
+10:4/0/physics_layer_0/angular_velocity = 0.0
+11:4/0 = 0
+11:4/0/physics_layer_0/linear_velocity = Vector2(0, 0)
+11:4/0/physics_layer_0/angular_velocity = 0.0
+12:4/0 = 0
+12:4/0/physics_layer_0/linear_velocity = Vector2(0, 0)
+12:4/0/physics_layer_0/angular_velocity = 0.0
+13:4/0 = 0
+13:4/0/physics_layer_0/linear_velocity = Vector2(0, 0)
+13:4/0/physics_layer_0/angular_velocity = 0.0
+14:4/0 = 0
+14:4/0/physics_layer_0/linear_velocity = Vector2(0, 0)
+14:4/0/physics_layer_0/angular_velocity = 0.0
+0:5/0 = 0
+0:5/0/physics_layer_0/linear_velocity = Vector2(0, 0)
+0:5/0/physics_layer_0/angular_velocity = 0.0
+1:5/0 = 0
+1:5/0/physics_layer_0/linear_velocity = Vector2(0, 0)
+1:5/0/physics_layer_0/angular_velocity = 0.0
+2:5/0 = 0
+2:5/0/physics_layer_0/linear_velocity = Vector2(0, 0)
+2:5/0/physics_layer_0/angular_velocity = 0.0
+3:5/0 = 0
+3:5/0/physics_layer_0/linear_velocity = Vector2(0, 0)
+3:5/0/physics_layer_0/angular_velocity = 0.0
+4:5/0 = 0
+4:5/0/physics_layer_0/linear_velocity = Vector2(0, 0)
+4:5/0/physics_layer_0/angular_velocity = 0.0
+5:5/0 = 0
+5:5/0/physics_layer_0/linear_velocity = Vector2(0, 0)
+5:5/0/physics_layer_0/angular_velocity = 0.0
+6:5/0 = 0
+6:5/0/physics_layer_0/linear_velocity = Vector2(0, 0)
+6:5/0/physics_layer_0/angular_velocity = 0.0
+7:5/0 = 0
+7:5/0/physics_layer_0/linear_velocity = Vector2(0, 0)
+7:5/0/physics_layer_0/angular_velocity = 0.0
+8:5/0 = 0
+8:5/0/physics_layer_0/linear_velocity = Vector2(0, 0)
+8:5/0/physics_layer_0/angular_velocity = 0.0
+9:5/0 = 0
+9:5/0/physics_layer_0/linear_velocity = Vector2(0, 0)
+9:5/0/physics_layer_0/angular_velocity = 0.0
+10:5/0 = 0
+10:5/0/physics_layer_0/linear_velocity = Vector2(0, 0)
+10:5/0/physics_layer_0/angular_velocity = 0.0
+11:5/0 = 0
+11:5/0/physics_layer_0/linear_velocity = Vector2(0, 0)
+11:5/0/physics_layer_0/angular_velocity = 0.0
+12:5/0 = 0
+12:5/0/physics_layer_0/linear_velocity = Vector2(0, 0)
+12:5/0/physics_layer_0/angular_velocity = 0.0
+13:5/0 = 0
+13:5/0/physics_layer_0/linear_velocity = Vector2(0, 0)
+13:5/0/physics_layer_0/angular_velocity = 0.0
+14:5/0 = 0
+14:5/0/physics_layer_0/linear_velocity = Vector2(0, 0)
+14:5/0/physics_layer_0/angular_velocity = 0.0
+0:6/0 = 0
+0:6/0/physics_layer_0/linear_velocity = Vector2(0, 0)
+0:6/0/physics_layer_0/angular_velocity = 0.0
+1:6/0 = 0
+1:6/0/physics_layer_0/linear_velocity = Vector2(0, 0)
+1:6/0/physics_layer_0/angular_velocity = 0.0
+2:6/0 = 0
+2:6/0/physics_layer_0/linear_velocity = Vector2(0, 0)
+2:6/0/physics_layer_0/angular_velocity = 0.0
+3:6/0 = 0
+3:6/0/physics_layer_0/linear_velocity = Vector2(0, 0)
+3:6/0/physics_layer_0/angular_velocity = 0.0
+4:6/0 = 0
+4:6/0/physics_layer_0/linear_velocity = Vector2(0, 0)
+4:6/0/physics_layer_0/angular_velocity = 0.0
+0:7/0 = 0
+0:7/0/physics_layer_0/linear_velocity = Vector2(0, 0)
+0:7/0/physics_layer_0/angular_velocity = 0.0
+1:7/0 = 0
+1:7/0/physics_layer_0/linear_velocity = Vector2(0, 0)
+1:7/0/physics_layer_0/angular_velocity = 0.0
+2:7/0 = 0
+2:7/0/physics_layer_0/linear_velocity = Vector2(0, 0)
+2:7/0/physics_layer_0/angular_velocity = 0.0
+3:7/0 = 0
+3:7/0/physics_layer_0/linear_velocity = Vector2(0, 0)
+3:7/0/physics_layer_0/angular_velocity = 0.0
+4:7/0 = 0
+4:7/0/physics_layer_0/linear_velocity = Vector2(0, 0)
+4:7/0/physics_layer_0/angular_velocity = 0.0
+6:7/0 = 0
+6:7/0/physics_layer_0/linear_velocity = Vector2(0, 0)
+6:7/0/physics_layer_0/angular_velocity = 0.0
+7:7/0 = 0
+7:7/0/physics_layer_0/linear_velocity = Vector2(0, 0)
+7:7/0/physics_layer_0/angular_velocity = 0.0
+7:7/0/physics_layer_0/polygon_0/points = PackedVector2Array(-8, -8, 8, -8, 8, 8, -8, 8)
+0:8/0 = 0
+0:8/0/physics_layer_0/linear_velocity = Vector2(0, 0)
+0:8/0/physics_layer_0/angular_velocity = 0.0
+1:8/0 = 0
+1:8/0/physics_layer_0/linear_velocity = Vector2(0, 0)
+1:8/0/physics_layer_0/angular_velocity = 0.0
+2:8/0 = 0
+2:8/0/physics_layer_0/linear_velocity = Vector2(0, 0)
+2:8/0/physics_layer_0/angular_velocity = 0.0
+3:8/0 = 0
+3:8/0/physics_layer_0/linear_velocity = Vector2(0, 0)
+3:8/0/physics_layer_0/angular_velocity = 0.0
+4:8/0 = 0
+4:8/0/physics_layer_0/linear_velocity = Vector2(0, 0)
+4:8/0/physics_layer_0/angular_velocity = 0.0
+
+[sub_resource type="TileSet" id="TileSet_1h5cn"]
+physics_layer_0/collision_layer = 1
+sources/0 = SubResource("TileSetAtlasSource_co861")
+
+[node name="Game" type="Node2D"]
+script = ExtResource("1_dcjfs")
+map_size = 22
+
+[node name="HUD" type="CanvasLayer" parent="."]
+script = ExtResource("3_sm3cs")
+
+[node name="Hud" type="Control" parent="HUD"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 2
+
+[node name="Fps_Display" type="Label" parent="HUD/Hud"]
+layout_mode = 1
+offset_right = 32.0
+offset_bottom = 4.0
+theme_override_font_sizes/font_size = 2
+
+[node name="Loaded_Bullets" type="Label" parent="HUD/Hud"]
+layout_mode = 1
+anchors_preset = 6
+anchor_left = 1.0
+anchor_top = 0.5
+anchor_right = 1.0
+anchor_bottom = 0.5
+offset_left = -40.0
+offset_top = -11.5
+offset_bottom = 11.5
+grow_horizontal = 0
+grow_vertical = 2
+theme_override_font_sizes/font_size = 4
+horizontal_alignment = 2
+vertical_alignment = 1
+
+[node name="stamina_bar" type="TextureProgressBar" parent="HUD/Hud"]
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.059375
+anchor_top = 0.755556
+anchor_right = 0.059375
+anchor_bottom = 0.755556
+offset_right = 80.0
+offset_bottom = 12.0
+scale = Vector2(0.5, 0.5)
+step = 0.1
+texture_under = ExtResource("8_c6s2p")
+texture_progress = ExtResource("8_c6s2p")
+tint_under = Color(1, 1, 1, 0.0392157)
+tint_progress = Color(0.933333, 0.933333, 0, 0.8)
+metadata/_edit_use_anchors_ = true
+
+[node name="lightning" type="TextureRect" parent="HUD/Hud/stamina_bar"]
+texture_filter = 2
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.1375
+anchor_top = 0.458308
+anchor_right = 0.1375
+anchor_bottom = 0.458308
+offset_left = -21.0
+offset_top = -9.49985
+offset_right = 17.0
+offset_bottom = 28.5002
+scale = Vector2(0.5, 0.5)
+texture = ExtResource("4_ueoyv")
+expand_mode = 1
+metadata/_edit_use_anchors_ = true
+
+[node name="health_bar" type="TextureProgressBar" parent="HUD/Hud"]
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.059375
+anchor_top = 0.816667
+anchor_right = 0.059375
+anchor_bottom = 0.816667
+offset_right = 80.0
+offset_bottom = 12.0
+scale = Vector2(0.5, 0.5)
+max_value = 10.0
+step = 0.1
+texture_under = ExtResource("8_c6s2p")
+texture_progress = ExtResource("8_c6s2p")
+tint_under = Color(1, 1, 1, 0.0392157)
+tint_progress = Color(0.615686, 0.0588235, 0, 0.8)
+metadata/_edit_use_anchors_ = true
+
+[node name="inima" type="TextureRect" parent="HUD/Hud/health_bar"]
+texture_filter = 2
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.05
+anchor_top = -0.0416768
+anchor_right = 0.05
+anchor_bottom = -0.0416768
+offset_left = -20.0
+offset_top = -9.5
+offset_right = 45.0
+offset_bottom = 55.5
+scale = Vector2(0.5, 0.5)
+texture = ExtResource("4_q4t6n")
+expand_mode = 1
+metadata/_edit_use_anchors_ = true
+
+[node name="hunger_bar" type="TextureProgressBar" parent="HUD/Hud"]
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.059375
+anchor_top = 0.877778
+anchor_right = 0.059375
+anchor_bottom = 0.877778
+offset_right = 80.0
+offset_bottom = 12.0
+scale = Vector2(0.5, 0.5)
+step = 0.1
+texture_under = ExtResource("8_c6s2p")
+texture_progress = ExtResource("8_c6s2p")
+tint_under = Color(1, 1, 1, 0.0392157)
+tint_progress = Color(0.4, 0.176471, 0.00784314, 0.8)
+metadata/_edit_use_anchors_ = true
+
+[node name="Water2" type="TextureRect" parent="HUD/Hud/hunger_bar"]
+texture_filter = 4
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.1125
+anchor_top = 3.95831
+anchor_right = 0.1125
+anchor_bottom = 3.95831
+offset_left = -21.0
+offset_top = -53.4998
+offset_right = 23.0
+offset_bottom = -5.49979
+scale = Vector2(0.5, 0.5)
+texture = ExtResource("6_mpsd0")
+expand_mode = 1
+metadata/_edit_use_anchors_ = true
+
+[node name="thirst_bar" type="TextureProgressBar" parent="HUD/Hud"]
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.059375
+anchor_top = 0.938889
+anchor_right = 0.059375
+anchor_bottom = 0.938889
+offset_right = 80.0
+offset_bottom = 12.0
+scale = Vector2(0.5, 0.5)
+step = 0.1
+texture_under = ExtResource("8_c6s2p")
+texture_progress = ExtResource("8_c6s2p")
+tint_under = Color(1, 1, 1, 0.0392157)
+tint_progress = Color(0, 0.788235, 0.917647, 0.8)
+metadata/_edit_use_anchors_ = true
+
+[node name="Water" type="TextureRect" parent="HUD/Hud/thirst_bar"]
+texture_filter = 2
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.1375
+anchor_top = 5.95831
+anchor_right = 0.1375
+anchor_bottom = 5.95831
+offset_left = -21.0
+offset_top = -75.4998
+offset_right = 17.0
+offset_bottom = -37.4998
+scale = Vector2(0.5, 0.5)
+texture = ExtResource("6_dmopy")
+expand_mode = 1
+metadata/_edit_use_anchors_ = true
+
+[node name="Inventory" parent="HUD" instance=ExtResource("3_p6ulm")]
+visible = false
+anchors_preset = -1
+Size = Vector2i(4, 5)
+
+[node name="TileMap" type="TileMap" parent="."]
+z_index = -2
+tile_set = SubResource("TileSet_1h5cn")
+format = 2
+
+[node name="NoCollisionProps" type="Node2D" parent="."]
+
+[node name="Entities" type="Node2D" parent="."]
+y_sort_enabled = true
+
+[node name="Smoother" type="Node" parent="Entities"]
+script = ExtResource("2_shc0i")
+smooth_parent = false
+recursive = false
+includes = Array[NodePath]([NodePath("../Player")])
+
+[node name="Player" parent="Entities" instance=ExtResource("1_g3mrk")]
+position = Vector2(148, 2)
+
+[node name="VisualEffects" type="Node2D" parent="."]
+
+[node name="MapGenerator" type="Node" parent="."]
+script = ExtResource("7_iqm4m")
+length_max = 12
+length_min = 5
+
+[node name="Render_Zombies" type="Timer" parent="."]
+autostart = true
+
+[node name="AudioListener2D" type="AudioListener2D" parent="."]
+
+[connection signal="timeout" from="Render_Zombies" to="." method="_on_render_zombies_timeout"]

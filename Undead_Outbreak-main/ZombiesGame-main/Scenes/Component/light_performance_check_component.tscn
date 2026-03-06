@@ -1,0 +1,6 @@
+[gd_scene load_steps=2 format=3 uid="uid://u1xjej0er2u4"]
+
+[ext_resource type="Script" uid="uid://cthuuhh53fpvb" path="res://Scripts/Components/LightPerformanceCheckComponent.gd" id="1_q7ojk"]
+
+[node name="LightPerformanceCheckComponent" type="Node"]
+script = ExtResource("1_q7ojk")

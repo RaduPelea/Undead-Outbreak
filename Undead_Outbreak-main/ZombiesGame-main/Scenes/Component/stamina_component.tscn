@@ -1,0 +1,7 @@
+[gd_scene load_steps=2 format=3 uid="uid://d2dbhcl2bccu"]
+
+[ext_resource type="Script" uid="uid://cnhgl32pxo03f" path="res://Scripts/Components/stamina_component.gd" id="1_1tuqj"]
+
+[node name="stamina_component" type="Node"]
+script = ExtResource("1_1tuqj")
+stamina_recharge = 10.0

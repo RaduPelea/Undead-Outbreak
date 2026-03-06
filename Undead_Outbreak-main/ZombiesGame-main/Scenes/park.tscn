@@ -1,0 +1,31 @@
+[gd_scene load_steps=3 format=3 uid="uid://30qlkcn34f6o"]
+
+[ext_resource type="Script" uid="uid://dmvu1q76p4pi8" path="res://Scripts/house.gd" id="1_iqh44"]
+[ext_resource type="Texture2D" uid="uid://cwc2tvk6isl67" path="res://Resources/park.png" id="2_rdgbl"]
+
+[node name="park_parent" type="Node2D" node_paths=PackedStringArray("corners", "roof", "tiles")]
+script = ExtResource("1_iqh44")
+corners = NodePath("corners")
+roof = NodePath("texture/Sprite2D")
+tiles = NodePath("texture")
+
+[node name="corners" type="Node2D" parent="."]
+
+[node name="Node2D" type="Node2D" parent="corners"]
+position = Vector2(0, -261)
+
+[node name="Node2D2" type="Node2D" parent="corners"]
+position = Vector2(500, -261)
+
+[node name="Node2D3" type="Node2D" parent="corners"]
+position = Vector2(0, 239)
+
+[node name="Node2D4" type="Node2D" parent="corners"]
+position = Vector2(500, 239)
+
+[node name="texture" type="Node2D" parent="."]
+
+[node name="Sprite2D" type="Sprite2D" parent="texture"]
+position = Vector2(250, -11)
+rotation = 1.5708
+texture = ExtResource("2_rdgbl")

@@ -1,0 +1,124 @@
+[gd_scene load_steps=17 format=3 uid="uid://bkqly732hdlny"]
+
+[ext_resource type="Script" uid="uid://csa8ryth4d77c" path="res://Scripts/player.gd" id="1_3tpos"]
+[ext_resource type="PackedScene" uid="uid://btqiohpo4pjd3" path="res://Scenes/Component/health_component.tscn" id="1_cdpcc"]
+[ext_resource type="PackedScene" uid="uid://sqop0klqx24n" path="res://Scenes/Component/user_input_component.tscn" id="3_21nly"]
+[ext_resource type="Script" uid="uid://cehlccxpeg5ob" path="res://Scripts/Components/bullet_attack_component.gd" id="4_if5qu"]
+[ext_resource type="Script" uid="uid://8ceahnnm6nye" path="res://Scripts/Components/movement_component.gd" id="4_ye44j"]
+[ext_resource type="Script" uid="uid://cnhgl32pxo03f" path="res://Scripts/Components/stamina_component.gd" id="6_kbsop"]
+[ext_resource type="Texture2D" uid="uid://gqrwdjh4wk5x" path="res://Resources/player.png" id="6_t2m63"]
+[ext_resource type="PackedScene" uid="uid://dt5g7hisen0pb" path="res://Scenes/Component/visibility_component.tscn" id="8_2ykp2"]
+[ext_resource type="Texture2D" uid="uid://c0kxktgbeenb2" path="res://Resources/circle2048_light.png" id="8_t2khp"]
+[ext_resource type="Script" uid="uid://cthuuhh53fpvb" path="res://Scripts/Components/LightPerformanceCheckComponent.gd" id="9_g3xkc"]
+[ext_resource type="AudioStream" uid="uid://b3nv3ogwbc4vp" path="res://Resources/walking.wav" id="10_27nb6"]
+[ext_resource type="PackedScene" uid="uid://tu5nkbyr2ihu" path="res://Scenes/Component/house_visibility_component.tscn" id="11_lq2rc"]
+[ext_resource type="Script" uid="uid://cnimv678yjfgd" path="res://Scripts/Components/hunger_component.gd" id="12_rgehh"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_iq5mj"]
+size = Vector2(8, 14)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_wm2bv"]
+size = Vector2(480, 270)
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_8ds4k"]
+radius = 16.0
+
+[node name="Player" type="CharacterBody2D" groups=["player"]]
+z_index = 1
+motion_mode = 1
+script = ExtResource("1_3tpos")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+shape = SubResource("RectangleShape2D_iq5mj")
+
+[node name="Health_component" parent="." node_paths=PackedStringArray("parent_node") instance=ExtResource("1_cdpcc")]
+health = 10.0
+parent_node = NodePath("..")
+
+[node name="User_Input_Component" parent="." node_paths=PackedStringArray("player_movement_component", "bullet_attack_component", "sprite", "stamina_component") instance=ExtResource("3_21nly")]
+player_movement_component = NodePath("../Movement_component")
+bullet_attack_component = NodePath("../Bullet_attack_component")
+sprite = NodePath("../Sprite2D")
+stamina_component = NodePath("../Stamina_component")
+
+[node name="Movement_component" type="Node" parent="." node_paths=PackedStringArray("parent", "audio")]
+script = ExtResource("4_ye44j")
+speed = 45.0
+parent = NodePath("..")
+audio = NodePath("AudioStreamPlayer2D")
+
+[node name="AudioStreamPlayer2D" type="AudioStreamPlayer2D" parent="Movement_component"]
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+light_mask = 2
+scale = Vector2(1.35, 1.35)
+texture = ExtResource("6_t2m63")
+
+[node name="Bullet_attack_component" type="Node2D" parent="." node_paths=PackedStringArray("movement_component", "audio")]
+position = Vector2(4, 0)
+script = ExtResource("4_if5qu")
+movement_component = NodePath("../Movement_component")
+audio = NodePath("../AudioStreamPlayer2D")
+
+[node name="TextureRect" type="TextureRect" parent="Bullet_attack_component"]
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_right = 12.0
+offset_bottom = 12.0
+grow_horizontal = 2
+grow_vertical = 2
+expand_mode = 1
+stretch_mode = 5
+
+[node name="Stamina_component" type="Node" parent="." node_paths=PackedStringArray("parent_node")]
+script = ExtResource("6_kbsop")
+parent_node = NodePath("..")
+stamina_recharge = 10.0
+
+[node name="Visibility_component2" parent="." node_paths=PackedStringArray("parent") instance=ExtResource("8_2ykp2")]
+parent = NodePath("..")
+points_to_check = Array[Vector2]([Vector2(0, 0), Vector2(1, 1), Vector2(-1, -1), Vector2(1, -1), Vector2(-1, 1)])
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Visibility_component2"]
+visible = false
+shape = SubResource("RectangleShape2D_wm2bv")
+
+[node name="PointLight2D" type="PointLight2D" parent="."]
+scale = Vector2(2.09473, 1.28418)
+enabled = false
+blend_mode = 2
+shadow_enabled = true
+shadow_color = Color(0, 0, 0, 0.219608)
+texture = ExtResource("8_t2khp")
+texture_scale = 0.1
+
+[node name="LightPerformanceComponent" type="Node" parent="."]
+script = ExtResource("9_g3xkc")
+check_targets = Array[NodePath]([NodePath("../PointLight2D")])
+
+[node name="InteractArea" type="Area2D" parent="."]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="InteractArea"]
+shape = SubResource("CircleShape2D_8ds4k")
+disabled = true
+
+[node name="Check_if_weapon" type="Timer" parent="."]
+autostart = true
+
+[node name="AudioStreamPlayer2D" type="AudioStreamPlayer2D" parent="."]
+stream = ExtResource("10_27nb6")
+max_distance = 600.0
+max_polyphony = 50
+
+[node name="HouseVisibilityComponent" parent="." instance=ExtResource("11_lq2rc")]
+points_to_check = Array[Vector2]([Vector2(0, 0)])
+
+[node name="Hunger_component" type="Node" parent="." node_paths=PackedStringArray("parent_health_component")]
+script = ExtResource("12_rgehh")
+parent_health_component = NodePath("../Health_component")
+
+[connection signal="body_entered" from="InteractArea" to="User_Input_Component" method="_on_interact_area_body_entered"]
+[connection signal="timeout" from="Check_if_weapon" to="Bullet_attack_component" method="_on_check_if_weapon_timeout"]

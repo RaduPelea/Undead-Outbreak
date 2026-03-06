@@ -1,0 +1,6 @@
+[gd_resource type="Resource" script_class="weapon_attack" load_steps=2 format=3 uid="uid://dbnlqa63wooja"]
+
+[ext_resource type="Script" uid="uid://cg60wb4p0yur1" path="res://Scripts/weapon_attack.gd" id="1_tnsbf"]
+
+[resource]
+script = ExtResource("1_tnsbf")

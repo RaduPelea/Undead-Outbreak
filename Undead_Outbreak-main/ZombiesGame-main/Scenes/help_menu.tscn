@@ -1,0 +1,63 @@
+[gd_scene format=3 uid="uid://bhqyullkehgyk"]
+
+[node name="Help_Menu" type="Control"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 2
+
+[node name="ColorRect" type="ColorRect" parent="."]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 2
+color = Color(0, 0, 0, 1)
+
+[node name="Label" type="Label" parent="."]
+layout_mode = 1
+anchors_preset = 10
+anchor_right = 1.0
+offset_bottom = 40.0
+grow_horizontal = 2
+theme_override_font_sizes/font_size = 12
+text = "The goal in this game is to find the antidote and exit the zombie infected city."
+autowrap_mode = 2
+
+[node name="Controls" type="Label" parent="."]
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.271875
+anchor_top = 0.205556
+anchor_right = 0.365625
+anchor_bottom = 0.222222
+offset_right = 40.0
+offset_bottom = 23.0
+text = "Controls:"
+metadata/_edit_use_anchors_ = true
+
+[node name="Label2" type="Label" parent="."]
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.3125
+anchor_top = 0.344444
+anchor_right = 0.665625
+anchor_bottom = 0.883333
+offset_right = 40.0
+offset_bottom = 23.0
+theme_override_font_sizes/font_size = 8
+text = "move:W-A-S-D 
+sprint : Shift
+Fire:Left Mouse Button
+Interact with item : Right mouse button
+Inventory : I/Q
+Pause : Escape
+Reload : R
+empty hands: G
+"
+metadata/_edit_use_anchors_ = true

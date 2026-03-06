@@ -1,0 +1,8 @@
+[gd_scene load_steps=2 format=3 uid="uid://r3d8ckublrfd"]
+
+[ext_resource type="Script" uid="uid://xra4k1g0nk4d" path="res://Scripts/Bullet.gd" id="1_bhvqx"]
+
+[node name="Bullet" type="Line2D"]
+width = 0.75
+default_color = Color(1, 1, 0.101961, 1)
+script = ExtResource("1_bhvqx")

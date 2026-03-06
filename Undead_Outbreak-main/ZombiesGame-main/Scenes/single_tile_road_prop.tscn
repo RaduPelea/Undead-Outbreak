@@ -1,0 +1,7 @@
+[gd_scene load_steps=2 format=3 uid="uid://cojgqysg6fai6"]
+
+[ext_resource type="Script" uid="uid://cy6jfat6t3ait" path="res://Scripts/Single_tile_road_prop.gd" id="1_dw70c"]
+
+[node name="Single_tile_road_prop" type="Sprite2D"]
+texture_filter = 3
+script = ExtResource("1_dw70c")

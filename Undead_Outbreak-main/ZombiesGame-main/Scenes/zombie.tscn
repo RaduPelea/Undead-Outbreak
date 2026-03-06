@@ -1,0 +1,73 @@
+[gd_scene load_steps=9 format=3 uid="uid://bqnb1kffd0vqh"]
+
+[ext_resource type="Script" uid="uid://cctkn8ce2o2gv" path="res://Scripts/zombie.gd" id="1_6x5wh"]
+[ext_resource type="PackedScene" uid="uid://btqiohpo4pjd3" path="res://Scenes/Component/health_component.tscn" id="1_v35im"]
+[ext_resource type="PackedScene" uid="uid://cnxnb3i5pyayd" path="res://Scenes/Component/movement_component.tscn" id="2_wv36y"]
+[ext_resource type="Texture2D" uid="uid://bkrw0ct5cf8l3" path="res://Resources/zombie.png" id="4_j4kxn"]
+[ext_resource type="PackedScene" uid="uid://bf4d3bjjpfsuc" path="res://Scenes/Component/track_component.tscn" id="5_f4f4w"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_wqk0s"]
+size = Vector2(7.5, 14)
+
+[sub_resource type="OccluderPolygon2D" id="OccluderPolygon2D_8wqve"]
+polygon = PackedVector2Array(-2, 3.704, 2, 3.704, 2, 0, -2, 0)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_f81bh"]
+size = Vector2(12, 17)
+
+[node name="Zombie" type="CharacterBody2D" groups=["alive", "enemy"]]
+light_mask = 3
+visibility_layer = 3
+motion_mode = 1
+script = ExtResource("1_6x5wh")
+exclusions_path = Array[NodePath]([NodePath(".")])
+ray_length = 15.0
+switch_rate = 8
+
+[node name="Health_component" parent="." node_paths=PackedStringArray("parent_node") instance=ExtResource("1_v35im")]
+health = 10.0
+parent_node = NodePath("..")
+
+[node name="movement_component" parent="." node_paths=PackedStringArray("parent", "audio") instance=ExtResource("2_wv36y")]
+speed = 45.0
+parent = NodePath("..")
+audio = NodePath("../walkingAudio")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+visible = false
+position = Vector2(0.25, 0)
+shape = SubResource("RectangleShape2D_wqk0s")
+
+[node name="LightOccluder2D2" type="LightOccluder2D" parent="."]
+scale = Vector2(1.35, 1.35)
+occluder = SubResource("OccluderPolygon2D_8wqve")
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+light_mask = 2
+scale = Vector2(1.35, 1.35)
+texture = ExtResource("4_j4kxn")
+flip_h = true
+
+[node name="TrackComponent" parent="." instance=ExtResource("5_f4f4w")]
+exclusions = Array[NodePath]([NodePath("..")])
+range = 200.0
+raycast_positions = Array[Vector2]([Vector2(0, 0)])
+vision_delay = 10
+
+[node name="AttackArea" type="Area2D" parent="."]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="AttackArea"]
+visible = false
+shape = SubResource("RectangleShape2D_f81bh")
+
+[node name="AudioStreamPlayer2D" type="AudioStreamPlayer2D" parent="."]
+max_distance = 250.0
+
+[node name="Sound_timer" type="Timer" parent="."]
+wait_time = 4.0
+autostart = true
+
+[node name="walkingAudio" type="AudioStreamPlayer2D" parent="."]
+
+[connection signal="body_entered" from="AttackArea" to="." method="_on_attack_area_body_entered"]
+[connection signal="timeout" from="Sound_timer" to="." method="_on_sound_timer_timeout"]
