@@ -59,11 +59,13 @@ text = "Back
 "
 
 [node name="credits_node" type="Label" parent="."]
-offset_left = 103.0
-offset_top = 69.0
-offset_right = 213.0
-offset_bottom = 95.0
-text = "Pelea Radu"
+offset_left = 101.0
+offset_top = 74.0
+offset_right = 211.0
+offset_bottom = 149.0
+text = "Mitri Robert
+Pelea Radu
+"
 horizontal_alignment = 1
 vertical_alignment = 1
 
