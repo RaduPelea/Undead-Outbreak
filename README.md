@@ -13,9 +13,12 @@ How I built it :
 
 How to install:
 
-I added an executable (UndeadOutbreak.exe). You can directly download it and run it. Unfortunately it only runs on windows.
-For a better view of the project :
-1. git clone https://github.com/RaduPelea/Undead-Outbreak .
-2. Install Godot 4.4 and open the downloaded files in the game engine.
-
+git clone https://github.com/RaduPelea/Undead-Outbreak .
+Install Godot 4.4 and open the downloaded files in the game engine (import project).
+Link to godot 4.4 : https://godotengine.org/download/archive/4.4-stable/
+From the main screen, select the project and press run.
 Credits: This project was built by Mitri Robert-Cristian and Pelea Radu-Stefan.
+
+<img width="629" height="444" alt="image" src="https://github.com/user-attachments/assets/0caf8c50-6aee-4ae5-a5df-0947dfc85b19" />
+
+<img width="1149" height="822" alt="image" src="https://github.com/user-attachments/assets/025a1ad9-7171-44de-aca5-198c1854552a" />
